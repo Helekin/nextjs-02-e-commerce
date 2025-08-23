@@ -1,5 +1,14 @@
-const HomePage = () => {
-  return <div>HomePage</div>;
+import ProductList from "@/components/product/product-list";
+
+import { getLatestProducts } from "@/lib/actions/product.actions";
+
+const HomePage = async () => {
+  const latestProducts = await getLatestProducts();
+  return (
+    <>
+      <ProductList data={latestProducts} title="New Arrivals" limit={4} />
+    </>
+  );
 };
 
 export default HomePage;
